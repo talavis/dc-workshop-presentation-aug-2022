@@ -43,22 +43,42 @@
 
 
 \begin{document}
- \begin{frame}
-  \maketitle
- \end{frame}
 
   % put logo in upper right corner to ape the official template
  \AddToShipoutPictureFG{
   \AtPageUpperRight{{\includegraphics[width=0.6cm,keepaspectratio]{img/scilifelab-symbol.pdf}}}
  }%
 
- \begin{frame}{A computer}
+ \section{Introduction}
+
+ \begin{frame}{Goals for Today}
   \begin{itemize}
-   \item Hardware
-   \item Kernel ("kernel space")
-   \item Software ("user space")
+   \item General orientation about how we (developers/sysadmin) use containers for development and deployment
+   \item Differences between emulators, virtual machines, and containers
+   \item Guided tour of DC-kube, our Kubernetes cluster
   \end{itemize}
  \end{frame}
+
+ \begin{frame}{The Dependency Issue}
+  \begin{itemize}
+   \item Software written for one computer architecture can't be run on another
+   \item All software require a specific set of libraries to run
+   \begin{itemize}
+    \item Common that different software requires the same library but different versions
+   \end{itemize}
+  \end{itemize}
+ \end{frame}
+
+ \begin{frame}{Add operation opcode}{Performing addition using different architectures}
+  
+  \begin{description}
+   \item[ARM] 0100
+   \item[MIPS] 100011
+   \item[x86] 000000xy
+  \end{description}
+ \end{frame}
+
+ \section{Emulators}
 
  \begin{frame}{Emulators}
   \begin{itemize}
@@ -69,6 +89,8 @@
   \end{itemize}
  \end{frame}
  
+  \section{Virtual Machines} 
+ 
  \begin{frame}{Virtual Machines}
   \begin{itemize}
    \item Abstract hardware
@@ -76,6 +98,7 @@
    \item Requires dedicated hardware
    \item "Long-term"
    \item QEMU
+   \item KVM
    \item VirtualBox (x86 only)
    \item May run at almost the same speed as the host
   \end{itemize}
@@ -84,14 +107,16 @@
  \begin{frame}
   \centering \alert{Demo: QEMU and virtual machines} 
  \end{frame}   
+ 
+ \section{Containers} 
   
  \begin{frame}{Containers}
   \begin{itemize}
    \item Namespace isolation
-   \item Tree / branches are namespaces
    \item Sharing hardware with all other containers and the host
    \item Images --- "templates"
    \item "Short-term"
+   \item No host --- runs normally on the computer
   \end{itemize}
  \end{frame}
  
@@ -117,7 +142,7 @@
   \end{columns}
  \end{frame}
 
- \section{Docker}
+ \subsection{Docker}
 
  \begin{frame}
   \begin{center}
@@ -125,19 +150,25 @@
    \vspace{7pt}
 
    \alert{Docker Desktop/Rancher Desktop}
+   \vspace{3pt}
    
    \alert{Using a container}
+   \vspace{3pt}
    
    \alert{Dockerfile}
+   \vspace{3pt}
    
    \alert{Docker-compose}
   \end{center}
  \end{frame}
 
+ \section{Kubernetes}
+
  \begin{frame}{Kubernetes}
   \begin{itemize}
    \item Container orchestration
    \item Originates from Google
+   \item "docker-compose for clusters"
   \end{itemize}
  \end{frame}  
 
